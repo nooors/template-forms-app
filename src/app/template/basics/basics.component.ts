@@ -9,6 +9,7 @@ import { NgForm } from "@angular/forms";
 export class BasicsComponent implements OnInit {
   @ViewChild("myForm") myForm!: NgForm;
 
+  // Default form value we bind it to NgModel
   initForm = {
     product: "RTX 4080ti",
     price: 10,
@@ -33,13 +34,17 @@ export class BasicsComponent implements OnInit {
     );
   }
 
-  // guardar( miFormulario: NgForm ) {price
+  // save( myForm: NgForm )
+  // We need the argument because before @ViewChild we don't have any reference to the form
+  // save(myForm: NgForm) {
   save() {
-    // console.log( this.miFormulario );
-    console.log("Posteo correcto");
+    // Now we have a form reference throught @ViewChild, so myForm is a propertie of the class
+    console.log(this.myForm);
+    console.log("Correct post");
 
+    // Clear he form and set initial values
     this.myForm.resetForm({
-      product: "Algo",
+      product: "Something",
       price: 0,
       stock: 0,
     });

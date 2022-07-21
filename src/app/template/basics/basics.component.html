@@ -3,6 +3,8 @@
 
 <div class="row">
   <div class="col">
+    <!-- <form (ngSubmit)="save(myForm)" #myForm="ngForm" autocomplete="off">   we need to pass the reference with save function bc in comp.ts we don't have any reference to the form-->
+    <!-- Once comp.ts has @ViewChild, the component has the reference to the form, we have no need to pass any value -->
     <form (ngSubmit)="save()" #myForm="ngForm" autocomplete="off">
       <!-- Product field -->
       <div class="mb-3 row">
@@ -20,7 +22,7 @@
           />
 
           <span class="form-text text-danger" *ngIf="validName()">
-            Must has 3 letters
+            Must have 3 letters
           </span>
         </div>
       </div>
@@ -39,7 +41,7 @@
             min="0"
           />
           <span class="form-text text-danger" *ngIf="validPrice()">
-            El precio debe de ser 0 o mayor
+            Price must be over 0
           </span>
         </div>
       </div>
