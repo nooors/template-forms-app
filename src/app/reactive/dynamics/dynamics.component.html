@@ -1,1 +1,83 @@
-<p>dynamics works!</p>
+<h2>Reactivos: <small> Dinámicos </small></h2>
+<hr />
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="save()">
+  <!-- Nombre -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input
+        class="form-control"
+        formControlName="name"
+        placeholder="Person name"
+      />
+      <span class="form-text text-danger" *ngIf="fieldIsValid('name')">
+        This field is required
+      </span>
+    </div>
+  </div>
+
+  <!-- Add Favorite -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Add</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          class="form-control"
+          [formControl]="newFavorite"
+          placeholder="Add Favorite"
+          (keyup.enter)="addFavorite()"
+        />
+
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="addFavorite()"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorite Games List -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorites</label>
+    <div class="col-sm-9" formArrayName="favorites">
+      <div
+        class="input-group mb-1"
+        *ngFor="let favorite of favoritesArr.controls; let i = index"
+      >
+        <input class="form-control" [formControlName]="i" />
+
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="delete(i)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="button" class="btn btn-primary float-end" (click)="save()">
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+
+<span>Valid</span>
+<pre>{{ myForm.valid }}</pre>
+<br />
+
+<span>Value</span>
+<pre>{{ myForm.value | json }}</pre>
+<br />
+
+<span>Agregar Juego</span>
+<pre>{{ newFavorite.valid }}</pre>
+<pre>{{ newFavorite.value }}</pre>
