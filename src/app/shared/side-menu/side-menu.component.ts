@@ -23,7 +23,7 @@ export class SideMenuComponent {
       route: "./template/basics",
     },
     {
-      text: "Dyamics",
+      text: "Dyamic",
       route: "./template/dynamics",
     },
     {
@@ -37,12 +37,22 @@ export class SideMenuComponent {
       route: "./reactive/basics",
     },
     {
-      text: "Dyamics",
+      text: "Dyamic",
       route: "./reactive/dynamics",
     },
     {
       text: "Switches",
       route: "./reactive/switches",
+    },
+  ];
+  authMenu: MenuItem[] = [
+    {
+      text: "Register",
+      route: "./auth/register",
+    },
+    {
+      text: "Login",
+      route: "./auth/login",
     },
   ];
 }

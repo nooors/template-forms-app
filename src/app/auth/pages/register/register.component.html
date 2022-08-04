@@ -1,0 +1,116 @@
+<h2>Reactive Validations</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="formSubmit()">
+      <!-- Name -->
+      <div class="row mb-3">
+        <label for="name" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            placeholder="Input your name"
+            formControlName="name"
+          />
+          <span class="form-text text-danger" *ngIf="fieldIsNotValid('name')"
+            >Must be fullname format</span
+          >
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="row mb-3">
+        <label for="email" class="col-sm-3 col-form-label">E-mail</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+            placeholder="Input your email"
+            formControlName="email"
+          />
+          <span class="form-text text-danger" *ngIf="fieldIsNotValid('email')"
+            >Email is required</span
+          >
+        </div>
+      </div>
+      <!-- User Name -->
+      <div class="row mb-3">
+        <label for="email" class="col-sm-3 col-form-label">User Name</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            name="user-name"
+            placeholder="Choose a name for your user"
+            formControlName="userName"
+          />
+          <span
+            class="form-text text-danger"
+            *ngIf="fieldIsNotValid('userName')"
+            >The user name can not be nooors</span
+          >
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="row mb-3">
+        <label for="password" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="Choose a password"
+            formControlName="password"
+          />
+          <span
+            class="form-text text-danger"
+            *ngIf="fieldIsNotValid('password')"
+            >This field is required and must have 6 characters at least</span
+          >
+        </div>
+      </div>
+      <!-- Confirm password -->
+      <div class="row mb-3">
+        <label for="confirm-password" class="col-sm-3 col-form-label"
+          >Confirm Password</label
+        >
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="password"
+            name="confirm-password"
+            placeholder="Confirm your password"
+            formControlName="confirmPassword"
+          />
+          <span
+            class="form-text text-danger"
+            *ngIf="fieldIsNotValid('confirmPassword')"
+            >Must be email format</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary float-end" type="submit">
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h2>Form Valid: {{ myForm.valid }}</h2>
+<h4>Name</h4>
+<pre>{{ myForm.controls['name'].errors | json }}</pre>
+<h4>Email</h4>
+<pre>{{ myForm.controls['email'].errors | json }}</pre>
+<h4>User Name</h4>
+<pre>{{ myForm.controls['userName'].errors | json }}</pre>
+<h4>Password</h4>
+<pre>{{ myForm.controls['password'].errors | json }}</pre>
+<h4>Confirm Password</h4>
+<pre>{{ myForm.controls['confirmPassword'].errors | json }}</pre>
